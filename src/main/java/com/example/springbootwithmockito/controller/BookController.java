@@ -3,6 +3,7 @@ package com.example.springbootwithmockito.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.springbootwithmockito.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,46 +21,35 @@ import com.example.springbootwithmockito.repository.BookRepository;
 @RequestMapping("/api/v1")
 public class BookController {
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
 
     @PostMapping(value = "save")
-    public Object saveBook(@RequestBody Book book){
-        return bookRepository.save(book);
+    public Book saveBook(@RequestBody Book book) throws Exception {
+        return bookService.save(book);
     }
 
 
     @GetMapping
     public List<Book> getAllBooks(){
-        return bookRepository.findAll();
+        return bookService.findAll();
     }
 
     @GetMapping(value = "{bookId}")
     public Optional<Book> getBookById(@PathVariable(value = "bookId") Long bookId){
-        return bookRepository.findById(bookId);
+        return bookService.findById(bookId);
     }
 
 
     @PutMapping
     public Book updateBookRecord(@RequestBody Book book) throws Exception {
-        if(book == null || book.getId() == null){
-            throw new Exception("Book not found in our records");
-        }
 
-        Optional<Book> optionalBook = bookRepository.findById(book.getId());
-        if(!optionalBook.isPresent()){
-            throw new Exception("This book is not present in our records, sorry");
-        }
-        Book existingBook = optionalBook.get();
-        existingBook.setName(book.getName());
-        existingBook.setSummary(book.getSummary());
-        existingBook.setRating(book.getRating());
 
-    return bookRepository.save(existingBook);
+    return bookService.save(book);
     }
 
     @DeleteMapping(value = "{bookId}")
     public void deleteBook(@PathVariable(value = "bookId") Long bookId){
-        bookRepository.deleteById(bookId);
+        bookService.deleteById(bookId);
     }
 }
