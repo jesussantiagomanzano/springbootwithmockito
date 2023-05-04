@@ -3,16 +3,12 @@ package com.example.springbootwithmockito.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.springbootwithmockito.dto.BookResponse;
 import com.example.springbootwithmockito.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.springbootwithmockito.entity.Book;
 import com.example.springbootwithmockito.repository.BookRepository;
@@ -25,12 +21,18 @@ public class BookController {
 
 
     @PostMapping(value = "save")
-    public Book saveBook(@RequestBody Book book) throws Exception {
-        return bookService.save(book);
+    public ResponseEntity<Book> saveBook(@RequestBody Book book) throws Exception {
+        return new ResponseEntity<>(bookService.save(book), HttpStatus.CREATED);
+       // return bookService.save(book);
     }
 
 
-    @GetMapping
+    @GetMapping("getAllBooksPage")
+    public BookResponse getAllBooks(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize){
+        return bookService.findAll(pageNo, pageSize);
+    }
+
+    @GetMapping("getAllBooks")
     public List<Book> getAllBooks(){
         return bookService.findAll();
     }
@@ -43,13 +45,26 @@ public class BookController {
 
     @PutMapping
     public Book updateBookRecord(@RequestBody Book book) throws Exception {
-
-
-    return bookService.save(book);
+        return bookService.save(book);
     }
 
     @DeleteMapping(value = "{bookId}")
     public void deleteBook(@PathVariable(value = "bookId") Long bookId){
         bookService.deleteById(bookId);
     }
+
+    @GetMapping(value = "genre")
+    public List<Book> findBooksByGenre(@PathVariable(value = "genre")String genre){
+        return bookService.findByGenre(genre);
+    }
+
+    @DeleteMapping("/delete/{bookId}")
+    public void deleteBook(@RequestParam("bookId") long bookId){
+        bookService.deleteById(bookId);
+
+    }
+
+
+
+
 }
