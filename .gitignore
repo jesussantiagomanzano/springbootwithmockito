@@ -3,10 +3,10 @@
 target/
 .DS_Store/
 .DS_Store
-.classpath/
-.factorypath/
+.classpath
+.factorypath
 .git/
 .gitignore/
 .idea/
-.project/
+.project
 .settings/
