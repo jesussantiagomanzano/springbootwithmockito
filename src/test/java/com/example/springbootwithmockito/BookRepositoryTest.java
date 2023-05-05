@@ -23,7 +23,7 @@ public class BookRepositoryTest {
     @Test
     public void saveAllReturnSavedBooks(){
         Book book = new Book(12L,"A new book","No summary for this book", "Novels",2);
-        Book book1 = Book.builder().id(3L).name("Another book").summary("No summary for this book").rating(3).build();
+        Book book1 = new Book(3L, "Another book", "No summary for this book", "Novels", 3);
 
         Book savedBook = bookRepository.save(book);
 
@@ -34,8 +34,8 @@ public class BookRepositoryTest {
 
     @Test
     public void getAllBooks(){
-        Book book1 = Book.builder().id(3L).name("Another book").summary("No summary for this book").rating(3).build();
-        Book book2= new Book(12L,"A new book","No summary for this book","Novels",2);
+        Book book1 = new Book(3L,"Another book", "No summary for this book",  "", 3);
+        Book book2 = new Book(12L,"A new book","No summary for this book","Novels",2);
 
         bookRepository.save(book1);
         bookRepository.save(book2);

@@ -47,11 +47,11 @@ public class BookServiceImpl implements BookService {
     }
 
 
-    private BookDTO mapToDto(Book pokemon) {
+    private BookDTO mapToDto(Book book) {
         BookDTO bookDTO = new BookDTO();
-        bookDTO.setId(pokemon.getId());
-        bookDTO.setName(pokemon.getName());
-        bookDTO.setGenre(pokemon.getGenre());
+        bookDTO.setId(book.getId());
+        bookDTO.setName(book.getName());
+        bookDTO.setGenre(book.getGenre());
         return bookDTO;
     }
 

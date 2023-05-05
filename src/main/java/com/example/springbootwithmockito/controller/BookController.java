@@ -48,10 +48,6 @@ public class BookController {
         return bookService.save(book);
     }
 
-    @DeleteMapping(value = "{bookId}")
-    public void deleteBook(@PathVariable(value = "bookId") Long bookId){
-        bookService.deleteById(bookId);
-    }
 
     @GetMapping(value = "genre")
     public List<Book> findBooksByGenre(@PathVariable(value = "genre")String genre){

@@ -1,3 +1,12 @@
 *.class
 .idea/
 target/
+.DS_Store/
+.DS_Store
+.classpath/
+.factorypath/
+.git/
+.gitignore/
+.idea/
+.project/
+.settings/

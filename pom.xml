@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<packaging>jar</packaging>
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
@@ -72,6 +73,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>spring-boot-aws-exe</finalName>
 	</build>
 	<repositories>
 		<repository>
