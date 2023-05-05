@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
@@ -63,6 +63,7 @@
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
+			<version>1.12.463</version>
 		</dependency>
 
 
