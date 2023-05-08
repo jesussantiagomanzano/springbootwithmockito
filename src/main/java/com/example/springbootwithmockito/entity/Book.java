@@ -9,7 +9,7 @@ import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Entity
-@Table(name = "book_record")
+@Table(name = "book")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
