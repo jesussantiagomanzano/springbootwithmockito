@@ -73,6 +73,11 @@
 			<version>8.0.30</version>
 		</dependency>
 
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+			<version>1.1.0</version>
+		</dependency>
 
 
 		<dependency>
@@ -80,9 +85,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+
 	</dependencies>
 
-	<build>
+<!--	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -98,7 +109,7 @@
 			</plugin>
 		</plugins>
 		<finalName>spring-boot-aws-exe</finalName>
-	</build>
+	</build>-->
 	<repositories>
 		<repository>
 			<id>spring-milestones</id>
